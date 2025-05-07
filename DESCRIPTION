@@ -11,7 +11,6 @@ Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.3.2
 Imports:
     shiny (>= 1.9.1),
-    htmltools,
     DT (>= 0.33),
     sortable (>= 0.5.0),
     tidyverse (>= 2.0.0),
@@ -41,4 +40,5 @@ Imports:
     parallel (>= 4.4.2),
     forcats (>= 1.0.0),
     esquisse (>= 2.1.0),
-    lubridate (>= 1.9.3)
+    lubridate (>= 1.9.3),
+    plotly
