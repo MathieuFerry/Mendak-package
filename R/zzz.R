@@ -1,5 +1,5 @@
 #' @importFrom bslib bs_theme
-#' @importFrom dplyr across all_of arrange bind_rows count filter left_join n rename select summarise sym top_n ungroup where
+#' @importFrom dplyr %>% across all_of arrange bind_rows count filter left_join n rename select summarise sym top_n ungroup where
 #' @importFrom DT datatable DTOutput formatRound JS renderDT
 #' @importFrom esquisse esquisse_server esquisse_ui
 #' @importFrom factoextra fviz_ca_col fviz_eig fviz_pca_var
