@@ -1,4 +1,33 @@
-#' @import shiny DT sortable tidyverse ggplot2 quanteda rainette wordcloud dplyr readxl writexl quanteda.textplots quanteda.textstats FactoMineR factoextra ggpubr ggrepel paletteer udpipe openxlsx stringr ggthemes tools scales RColorBrewer bslib tibble parallel forcats esquisse lubridate
+#' @importFrom bslib bs_theme
+#' @importFrom dplyr across all_of arrange bind_rows count filter left_join n rename select summarise sym top_n ungroup where
+#' @importFrom DT datatable DTOutput formatRound JS renderDT
+#' @importFrom esquisse esquisse_server esquisse_ui
+#' @importFrom factoextra fviz_ca_col fviz_eig fviz_pca_var
+#' @importFrom FactoMineR CA PCA
+#' @importFrom forcats fct_rev
+#' @importFrom ggplot2 aes coord_flip element_text geom_bar geom_boxplot geom_histogram geom_hline geom_point geom_smooth geom_text geom_vline ggplot guide_legend guides labs position_fill position_stack scale_color_manual scale_fill_brewer scale_size_continuous scale_y_continuous theme theme_minimal theme_void
+#' @importFrom ggpubr ggscatter group_by mutate
+#' @importFrom ggrepel geom_text_repel
+#' @importFrom lubridate dmy my ymd
+#' @importFrom openxlsx read.xlsx
+#' @importFrom paletteer paletteer_d
+#' @importFrom quanteda as.tokens convert corpus dfm dfm_group dfm_subset dfm_trim docnames docvars fcm fcm_select kwic print rowSums stopwords t tokens tokens_remove tokens_select tokens_tolower topfeatures types
+#' @importFrom quanteda.textplots textplot_network textplot_wordcloud
+#' @importFrom quanteda.textstats as.matrix textstat_frequency textstat_keyness textstat_summary
+#' @importFrom rainette clusters_by_doc_table cutree cutree_rainette cutree_rainette2 rainette rainette_plot rainette_stats rainette2 rainette2_plot split_segments
+#' @importFrom RColorBrewer brewer.pal
+#' @importFrom readr read_file
+#' @importFrom readxl read_excel
+#' @importFrom shiny actionButton br checkboxGroupInput checkboxInput column conditionalPanel div downloadButton downloadHandler eventReactive fileInput fluidPage fluidRow h3 HTML incProgress mainPanel moduleServer navbarMenu navbarPage NS numericInput observe observeEvent p plotOutput radioButtons reactive reactiveVal reactiveValues renderPlot renderText renderUI req selectInput shinyApp showNotification sidebarLayout sidebarPanel sliderInput span tabPanel tabsetPanel tagList textInput uiOutput updateSelectInput verbatimTextOutput withProgress
+#' @importFrom sortable sortable_js
+#' @importFrom stats cor quantile reorder
+#' @importFrom stringr str_count
+#' @importFrom tibble column_to_rownames rownames_to_column
+#' @importFrom tidyr pivot_wider
+#' @importFrom tools file_ext
+#' @importFrom udpipe udpipe udpipe_download_model
+#' @importFrom utils head read.csv read.csv2 str tail write.csv
+#' @importFrom writexl write_xlsx
 NULL
 
 app_ui <- function() {
@@ -69,13 +98,13 @@ app_ui <- function() {
                                    )
                           ),
                           tabPanel("View dataframe",
-                                   DTOutput("data_view")
+                                   DT::DTOutput("data_view")
                           ),
                           tabPanel("View text(s)",
                                    uiOutput("textvar_selector"),
                                    textInput("search_wordintext", "Filter documents (type to search):", ""),
 
-                                   DTOutput("document_table0")
+                                   DT::DTOutput("document_table0")
 
                           )
 
@@ -97,7 +126,7 @@ app_ui <- function() {
 
                                      ),
                                      mainPanel(
-                                       DTOutput("univariate_table"),
+                                       DT::DTOutput("univariate_table"),
                                        plotOutput("univariate_plot")
                                      )
                                    )
@@ -111,7 +140,7 @@ app_ui <- function() {
 
                                      ),
                                      mainPanel(
-                                       DTOutput("bivariate_table"),
+                                       DT::DTOutput("bivariate_table"),
                                        plotOutput("bivariate_plot")
                                      )
                                    )
@@ -142,7 +171,7 @@ app_ui <- function() {
                                          ##Here: add number of features by document
                                          ##Number of segments in each document
                                          tabPanel("Frequency of cleaned features",
-                                                  DTOutput("freq_terms_table")
+                                                  DT::DTOutput("freq_terms_table")
                                          ),
                                          tabPanel("Word cloud",
                                                   sliderInput("maxwords", "Maximum number of words to plot", min = 50, max = 1000, value = 100),
@@ -176,8 +205,8 @@ app_ui <- function() {
                                                   p("A high positive chi-squared value is distinctive of features of the 'top' category, whereas a low negative chi-squared value is distinctive of the 'bottom' category (from the word cloud)"),
                                                   sliderInput("maxkeyness", "Maximum number of characteristic words to show", min = 1, max = 50, value = 20),
 
-                                                  DTOutput("dualfreq_terms_tableTop"),
-                                                  DTOutput("dualfreq_terms_tableBttm"),
+                                                  DT::DTOutput("dualfreq_terms_tableTop"),
+                                                  DT::DTOutput("dualfreq_terms_tableBttm"),
                                          )
                                        )
                                      )
@@ -192,7 +221,7 @@ app_ui <- function() {
                                        actionButton("compute_strat_freq", "Compute Stratified Frequency")
                                      ),
                                      mainPanel(
-                                       DTOutput("strat_freq_table")
+                                       DT::DTOutput("strat_freq_table")
                                      )
                                    )
                           ),
@@ -253,7 +282,7 @@ app_ui <- function() {
                                        actionButton("search_context", "Confirm Selection")
                                      ),
                                      mainPanel(
-                                       DTOutput("table_context")
+                                       DT::DTOutput("table_context")
                                      )
                                    )),
 
