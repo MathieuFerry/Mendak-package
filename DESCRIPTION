@@ -1,0 +1,43 @@
+Package: mendak
+Title: Mendak For Statistical Textual Analysis
+Version: 0.0.0.9000
+Authors@R: 
+    person("Mathieu", "Ferry", , "mathieu.ferry@uvsq.fr", role = c("aut", "cre"))
+Description: Mendak is a shiny app for statistical textual analysis without the burden of coding. At the moment, no correspondance is offered between click-button manipulations and coding lines. The application can also be accessed online at this address: https://analytics.huma-num.fr/Mathieu.Ferry/mendak/
+License: `use_mit_license()`, `use_gpl3_license()` or friends to pick a
+    license
+Encoding: UTF-8
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.3.2
+Imports:
+  shiny,
+  DT,
+  sortable,
+  tidyverse,
+  ggplot2,
+  quanteda,
+  rainette,
+  wordcloud,
+  dplyr,
+  readxl,
+  writexl,
+  quanteda.textplots,
+  quanteda.textstats,
+  FactoMineR,
+  factoextra,
+  ggpubr,
+  ggrepel,
+  paletteer,
+  udpipe,
+  openxlsx,
+  stringr,
+  ggthemes,
+  tools,
+  scales,
+  RColorBrewer,
+  bslib,
+  tibble,
+  parallel,
+  forcats,
+  esquisse,
+  lubridate
