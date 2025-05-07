@@ -11,6 +11,7 @@ Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.3.2
 Imports:
     shiny (>= 1.9.1),
+    htmltools,
     DT (>= 0.33),
     sortable (>= 0.5.0),
     tidyverse (>= 2.0.0),
